@@ -45,7 +45,7 @@ index 03ff6f8..a9331fe 100644
  
 +&mmc1 {
 +	pinctrl-names = "default";
-+	pinctrl-0 = <&mmc1_pins_a>;
++	pinctrl-0 = <&mmc1_pins>;
 +	vmmc-supply = <&reg_vcc3v3>;
 +	vqmmc-supply = <&reg_vcc3v3>;
 +	mmc-pwrseq = <&wifi_pwrseq>;
