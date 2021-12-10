@@ -14,7 +14,9 @@ inherit image_types
 #
 
 # This image depends on the rootfs image
-IMAGE_TYPEDEP_sunxi-sdimg = "${SDIMG_ROOTFS_TYPE}"
+SDIMG_ROOTFS_TYPE ?= "ext4"
+
+IMAGE_TYPEDEP:sunxi-sdimg = "${SDIMG_ROOTFS_TYPE}"
 
 # Boot partition volume id
 BOOTDD_VOLUME_ID ?= "boot"
@@ -29,7 +31,7 @@ IMAGE_ROOTFS_ALIGNMENT = "2048"
 SDIMG_ROOTFS_TYPE ?= "ext4"
 SDIMG_ROOTFS = "${IMGDEPLOYDIR}/${IMAGE_NAME}.rootfs.${SDIMG_ROOTFS_TYPE}"
 
-do_image_sunxi_sdimg[depends] += " \
+do_image:sunxi_sdimg[depends] += " \
 			parted-native:do_populate_sysroot \
 			mtools-native:do_populate_sysroot \
 			dosfstools-native:do_populate_sysroot \
