@@ -30,7 +30,7 @@ IMAGE_ROOTFS_ALIGNMENT = "2048"
 
 SDIMG_ROOTFS = "${IMGDEPLOYDIR}/${IMAGE_NAME}.rootfs.${SDIMG_ROOTFS_TYPE}"
 
-do_image:sunxi_sdimg[depends] += " \
+do_image_sunxi_sdimg[depends] += " \
 			parted-native:do_populate_sysroot \
 			mtools-native:do_populate_sysroot \
 			dosfstools-native:do_populate_sysroot \
