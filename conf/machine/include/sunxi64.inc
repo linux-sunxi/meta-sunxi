@@ -46,6 +46,9 @@ addtask do_fix_device_tree_location after do_write_wks_template before do_image_
 
 SUNXI_BOOT_SPACE ?= "40"
 IMAGE_BOOT_FILES ?= "${KERNEL_IMAGETYPE} boot.scr ${KERNEL_DEVICETREE}"
+IMAGE_BOOT_FILES:append = " ${@bb.utils.contains('DISTRO_FEATURES', 'sunxi-env', 'sunxienv.txt', '', d)}"
+IMAGE_BOOT_FILES:append = " ${@ '' if (d.getVar('SUNXI_OVERLAYS_ENABLE') or "").strip() == "" else 'devicetree/*.dtbo;dtbo/'}"
+
 
 WKS_FILES ?= "sunxi-sdcard-image.wks.in"
 WKS_FILE_DEPENDS ?= "virtual/kernel u-boot"

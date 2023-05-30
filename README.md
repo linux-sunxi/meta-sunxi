@@ -84,4 +84,72 @@ This code changes the default CPU governor from _fantasy_ to _ondemand_, and tun
 
 For additional discussion, see https://github.com/linux-sunxi/meta-sunxi/issues/25
 
+Custom boot environment & devicetree overlay suppport
+=====================================================
+
+The layer provide a basic custom enviroment for linux mainline that enables:
+
+- Custom boot argument to be passed to the kernel.
+- Basic devicetree overlay support.
+
+By default this features are disabled and have to be activated including this the bitbake configuration (e.g. local.conf):
+
+```
+DISTRO_FEATURES:append = " sunxi-env"
+```
+
+This feature instruct the layer to deploy the file ``` /boot/sunxienv.txt ``` that is loaded during boot customize kernel boot command line.
+
+DT Overlay support
+------------------
+
+To enable overlays the following line must be activated in bitbake configuration (e.g. local.conf):
+
+```
+SUNXI_OVERLAYS_ENABLE:append = " <space separeted list with the desired overlay names without .dts>"
+```
+
+The layer includes a common set for DT overalys organized by family. The list can be found in the
+following path ```meta-sunxi/recipes-bs/sunxi-overlays/files/<socfamily>/<dts file>```
+
+Once activated the following content will be added to yout image in the boot partition:
+```
+/boot/dtbo/*.dbto (all compiled overlays selected in SUNXI_OVERLAYS_ENABLE)
+/boot/sunxienv.txt (uboot config file with the full list of devicetree overlays)
+```
+
+```/boot/sunxienv.txt``` can be modified after the build to activate or deactive the overlays on boot to provide
+runtime flexibility or for debugging. A ```.dbto``` file can be also loaded at runtime 
+if the kernel supports it via sysfs interface using ```cat [dbto file] > /sys/kernel/config/device-tree/overlays/```
+
+
+Adding custom DT overlays
+-------------------------
+It is possible to add custom overlay/s via a ```bbappend``` recipe.
+
+```
+recipies-bsp
+     - sunxi-overlays
+        - sunxi-overlays%.bbappend
+        - files
+            - <custom.dts>
+
+Inside the .bbappend the following metadata is requried:
+
+```
+FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
+SRC_URI:${SOC_FAMILY}:append = " file://<custom.dts>"
+```
+
+Don't forget to add the custom overlay in your image or local configuration:
+
+```
+SUNXI_OVERLAYS_ENABLED:append = " <custom>"
+```
+
+
+
+
+
+
 

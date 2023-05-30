@@ -16,6 +16,9 @@ DEPENDS += "rsync-native"
 # Pull in the devicetree files into the rootfs
 RDEPENDS_${KERNEL_PACKAGE_NAME}-base += "kernel-devicetree"
 
+# if sunxi-env featture is enable devicetrees need to be compiled with symbols
+KERNEL_DTC_FLAGS += " ${@bb.utils.contains('DISTRO_FEATURES','sunxi-env','-@ -H epapr','',d)}"
+
 KERNEL_EXTRA_ARGS += "LOADADDR=${UBOOT_ENTRYPOINT}"
 
 S = "${WORKDIR}/linux-${PV}"
