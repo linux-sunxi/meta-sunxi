@@ -29,3 +29,31 @@ do_compile:sun50i[depends] += "trusted-firmware-a:do_deploy"
 do_compile:append:sunxi() {
     ${B}/tools/mkimage -C none -A arm -T script -d ${WORKDIR}/boot.cmd ${WORKDIR}/${UBOOT_ENV_BINARY}
 }
+
+# Add custom env files
+
+do_install:append:sunxi() {
+
+    if ${@bb.utils.contains('DISTRO_FEATURES','sunxi-env','false','true',d)}; then
+        return
+    fi
+    
+    echo "# sunxi boot parameters" > ${D}/boot/sunxienv.txt
+    echo "# extra=" >> ${D}/boot/sunxienv.txt
+    echo "overlays=${SUNXI_OVERLAYS_ENABLE}" >> ${D}/boot/sunxienv.txt    
+    chmod 0644 ${D}/boot/sunxienv.txt
+
+}
+
+do_deploy:append:sunxi() {
+
+    if ${@bb.utils.contains('DISTRO_FEATURES','sunxi-env','false','true',d)}; then
+        return
+    fi
+
+    install -Dm 0644 ${D}/boot/sunxienv.txt ${DEPLOYDIR}/sunxienv.txt
+
+}
+
+FILES:${PN} += "${@bb.utils.contains('DISTRO_FEATURES','sunxi-env','/boot/sunxienv.txt','',d)}"
+RDEPENDS:${PN}:append = " ${@ '' if (d.getVar('SUNXI_OVERLAYS_ENABLE') or "").strip() == "" else 'sunxi-overlays'}"
