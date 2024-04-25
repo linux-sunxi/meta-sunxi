@@ -1,0 +1,10 @@
+
+# Kmeta for uwe5622
+# for 6.1 kernel
+# source: armbian misc drivers
+
+
+patch wireless-driver-for-uwe5622-allwinner.patch 
+patch wireless-driver-for-uwe5622-allwinner-bugfix.patch 
+
+include uwe5622-common.scc
