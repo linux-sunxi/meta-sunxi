@@ -21,3 +21,5 @@ SRC_URI:append:orange-pi-zero2  = " \
         file://0011-dts-add-usb-to-h616.patch \
         file://0012-dts-orange-pi-zero2.patch \
 "
+KERNEL_FEATURES:append:orange-pi-3lts = " bsp/orange-pi-3lts/orange-pi-3lts-6_1.scc bsp/uwe5622/uwe5622-6_1.scc"
+

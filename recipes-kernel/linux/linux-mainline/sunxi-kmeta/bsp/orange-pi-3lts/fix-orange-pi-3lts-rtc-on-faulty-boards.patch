@@ -1,0 +1,29 @@
+From 791849a059cce08f238491b8cae1c3d452edcda5 Mon Sep 17 00:00:00 2001
+From: OpenEmbedded <oe.patch@oe>
+Date: Wed, 6 Dec 2023 00:37:25 +0100
+Subject: [PATCH 1/2] fix orange pi 3lts rtc on faulty boards"
+
+---
+ arch/arm64/boot/dts/allwinner/sun50i-h6-orangepi-3-lts.dts | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/allwinner/sun50i-h6-orangepi-3-lts.dts b/arch/arm64/boot/dts/allwinner/sun50i-h6-orangepi-3-lts.dts
+index 67f38b8a1..e3337c6f2 100644
+--- a/arch/arm64/boot/dts/allwinner/sun50i-h6-orangepi-3-lts.dts
++++ b/arch/arm64/boot/dts/allwinner/sun50i-h6-orangepi-3-lts.dts
+@@ -331,10 +331,10 @@ &pwm {
+ &r_ir {
+ 	status = "okay";
+ };
+-
++/*
+ &rtc {
+ 	clocks = <&ext_osc32k>;
+-};
++};*/
+ 
+ /delete-node/ &spi0;
+ 
+-- 
+2.43.0
+

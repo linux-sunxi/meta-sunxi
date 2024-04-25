@@ -44,7 +44,8 @@ S = "${WORKDIR}/linux-${PV}"
 KRELEASE = "${@d.getVar('PV', True).split('.')[0]}"
 
 SRC_URI = "https://www.kernel.org/pub/linux/kernel/v${KRELEASE}.x/linux-${PV}.tar.xz \
-	file://defconfig \
+	   file://defconfig \
+	   file://sunxi-kmeta;type=kmeta;name=sunxi-kmeta;destsuffix=sunxi-kmeta \
 "
 
 # append patches for kernels before 6.5 and after based on version
