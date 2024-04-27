@@ -2,10 +2,10 @@
 # patches for 6.5 & 6.6
 
 
-patch wireless-driver-for-uwe5622-allwinner-v6.3.patch
-patch wireless-driver-for-uwe5622-allwinner-bugfix-v6.3.patch
-patch wireless-driver-for-uwe5622-allwinner-v6.3-compilation-fix.patch
-patch wireless-driver-for-uwe5622-v6.4-post.patch
+patch uwe5622-allwinner-v6.3.patch
+patch uwe5622-allwinner-bugfix-v6.3.patch
+patch uwe5622-allwinner-v6.3-compilation-fix.patch
+patch uwe5622-v6.4-post.patch
 
 include uwe5622-common.scc
 

@@ -1,6 +1,6 @@
 # Kmeta for uwe5622
-# for kernel 6.6
+# for kernel 6.6 only
 
 include uwe5622-6_5.scc
 
-patch wireless-driver-for-uwe5622-v6.6-fix-tty-sdio.patch
+patch uwe5622-v6.6-fix-tty-sdio.patch

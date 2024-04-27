@@ -1,0 +1,7 @@
+# Kmeta for uwe5622
+# for kernel 6.7 
+# simply includes 6.6 metadata
+
+include uwe5622-6_6.scc
+
+
