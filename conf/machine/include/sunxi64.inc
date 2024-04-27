@@ -4,6 +4,7 @@ include conf/machine/include/soc-family.inc
 MACHINEOVERRIDES =. "sunxi:sunxi64:"
 
 PREFERRED_PROVIDER_virtual/kernel ?= "linux-mainline"
+PREFERRED_VERSION_linux-mainline ?= "6.6.%"
 PREFERRED_PROVIDER_u-boot ?= "u-boot"
 PREFERRED_PROVIDER_virtual/bootloader ?= "u-boot"
 
