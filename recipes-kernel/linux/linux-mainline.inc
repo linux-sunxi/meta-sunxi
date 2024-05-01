@@ -70,5 +70,10 @@ SRC_URI:append:bananapi = " file://axp20x.cfg"
 SRC_URI:append:bananapi-m2-zero = " file://axp20x.cfg"
 SRC_URI:append:cubietruck = " file://axp20x.cfg"
 SRC_URI:append:nanopi-neo-air = " file://cam500b.cfg"
+SRC_URI:append:orange-pi-prime = " \
+	file://0001-dts-sun50i-h5-enable-power-button-for-orange-pi-prime.patch \
+	file://0002-dts-sun50i-h5-orange-pi-prime-add-regulator.patch \
+	file://0003-dts-sun50i-h5-orange-pi-prime-add-rtl8723cs.patch \
+"
 
 FILES_${KERNEL_PACKAGE_NAME}-base:append = " ${nonarch_base_libdir}/modules/${KERNEL_VERSION}/modules.builtin.modinfo"

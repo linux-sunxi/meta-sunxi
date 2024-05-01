@@ -1,0 +1,66 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: The-going <48602507+The-going@users.noreply.github.com>
+Date: Mon, 24 Jan 2022 19:34:31 +0300
+Subject: arm64:dts: sun50i-h5-orangepi-prime add regulator
+
+---
+ .../allwinner/sun50i-h5-orangepi-prime.dts    | 30 +++++++++++++++++++
+ 1 file changed, 30 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/allwinner/sun50i-h5-orangepi-prime.dts b/arch/arm64/boot/dts/allwinner/sun50i-h5-orangepi-prime.dts
+index 998396bc0..6dc6850c1 100644
+--- a/arch/arm64/boot/dts/allwinner/sun50i-h5-orangepi-prime.dts
++++ b/arch/arm64/boot/dts/allwinner/sun50i-h5-orangepi-prime.dts
+@@ -8,6 +8,7 @@
+ 
+ #include <dt-bindings/gpio/gpio.h>
+ #include <dt-bindings/input/input.h>
++#include <dt-bindings/pinctrl/sun4i-a10.h>
+ 
+ / {
+ 	model = "Xunlong Orange Pi Prime";
+@@ -93,6 +94,10 @@ wifi_pwrseq: wifi_pwrseq {
+ 	};
+ };
+ 
++&cpu0 {
++	cpu-supply = <&reg_vdd_cpux>;
++};
++
+ &codec {
+ 	allwinner,audio-routing =
+ 		"Line Out", "LINEOUT",
+@@ -188,6 +193,31 @@ &ohci3 {
+ 	status = "okay";
+ };
+ 
++&r_i2c {
++	status = "okay";
++
++	reg_vdd_cpux: regulator@65 {
++		compatible = "silergy,sy8106a";
++		reg = <0x65>;
++		regulator-name = "vdd-cpux";
++		silergy,fixed-microvolt = <1200000>;
++		/*
++		 * The datasheet uses 1.1V as the minimum value of VDD-CPUX,
++		 * however both the Armbian DVFS table and the official one
++		 * have operating points with voltage under 1.1V, and both
++		 * DVFS table are known to work properly at the lowest
++		 * operating point.
++		 *
++		 * Use 1.0V as the minimum voltage instead.
++		 */
++		regulator-min-microvolt = <1000000>;
++		regulator-max-microvolt = <1400000>;
++		regulator-ramp-delay = <200>;
++		regulator-boot-on;
++		regulator-always-on;
++	};
++};
++
+ &uart0 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&uart0_pa_pins>;
+-- 
+2.25.1
