@@ -1,8 +1,8 @@
 # Common patches for h616 and h618
 # Ported from armbian
 # https://github.com/armbian/build/tree/main/patch/kernel/archive/sunxi-6.6/patches.armbian
+# Armabian includes a hack hdmi output not included here: drivers-hack-for-h616-hdmi-video-output.patch
 
-#patch Add-sunxi-addr-driver-Used-to-fix-uwe5622-bluetooth-MAC-address.patch
 patch add-nodes-for-sunxi-info-addr-dump-reg.patch
 patch arm64-dts-allwinner-h616-Add-device-node-for-SID.patch
 patch arm64-dts-allwinner-h616-Add-efuse_xlate-cpu-frequency-scaling-v1_6_2.patch
@@ -15,7 +15,6 @@ patch arm64-dts-allwinner-sun50i-h616-PG-12c-pins.patch
 patch arm64-dts-allwinner-sun50i-h616-spi1-cs1-pin.patch
 
 patch arm64-dts-sun50i-h616-Add-dma-node.patch
-#patch drivers-hack-for-h616-hdmi-video-output.patch
 patch drv-nvmem-sunxi_sid-Support-SID-on-H616.patch
 patch drv-rtc-sun6i-Add-Allwinner-H616-support.patch
 patch drv-rtc-sun6i-support-RTCs-without-external-LOSCs.patch
