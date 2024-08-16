@@ -3,6 +3,8 @@ From: Marek Belisko <marek.belisko@open-nandra.com>
 Date: Thu, 11 May 2023 11:18:33 +0200
 Subject: [PATCH] bananapi-m64: Consistent nodes for mmc devices
 
+Upstream-Status: Pending
+
 Signed-off-by: Marek Belisko <marek.belisko@open-nandra.com>
 ---
  arch/arm64/boot/dts/allwinner/sun50i-a64-bananapi-m64.dts | 3 +++

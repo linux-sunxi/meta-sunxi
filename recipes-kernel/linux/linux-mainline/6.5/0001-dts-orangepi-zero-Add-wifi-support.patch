@@ -3,6 +3,8 @@ From: Marek Belisko <marek.belisko@open-nandra.com>
 Date: Tue, 24 Oct 2023 10:40:52 +0200
 Subject: [PATCH] dts: orangepi-zero: Add wifi support
 
+Upstream-Status: Pending
+
 Signed-off-by: Marek Belisko <marek.belisko@open-nandra.com>
 ---
  .../allwinner/sun8i-h2-plus-orangepi-zero.dts | 46 +++++++++++++++----
