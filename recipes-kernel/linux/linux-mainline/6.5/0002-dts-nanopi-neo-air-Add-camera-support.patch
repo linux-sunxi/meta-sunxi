@@ -3,6 +3,8 @@ From: Marek Belisko <marek.belisko@open-nandra.com>
 Date: Tue, 24 Oct 2023 10:42:36 +0200
 Subject: [PATCH] dts:nanopi-neo-air: Add camera support
 
+Upstream-Status: Pending
+
 Signed-off-by: Marek Belisko <marek.belisko@open-nandra.com>
 ---
  .../dts/allwinner/sun8i-h3-nanopi-neo-air.dts | 85 +++++++++++++++++++
