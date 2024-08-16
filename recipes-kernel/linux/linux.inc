@@ -1,6 +1,6 @@
 DESCRIPTION = "Linux Kernel"
 SECTION = "kernel"
-LICENSE = "GPLv2"
+LICENSE = "GPL-2.0-only"
 
 INC_PR = "r0"
 
