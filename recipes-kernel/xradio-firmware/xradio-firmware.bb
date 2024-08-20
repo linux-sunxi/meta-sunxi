@@ -9,7 +9,7 @@ SRCREV = "761658e1701c77a0a84706754e6db1a25ee60b82"
 
 COMPATIBLE_MACHINE = "orange-pi-zero"
 
-SRC_URI = "git://github.com/armbian/firmware.git;protocol=https"
+SRC_URI = "git://github.com/armbian/firmware.git;protocol=https;branch=master"
 
 S = "${WORKDIR}/git"
 
