@@ -15,10 +15,13 @@ SRC_URI:append:sunxi = " \
     file://0001-nanopi_neo_air_defconfig-Enable-eMMC-support.patch \
     file://0002-Added-nanopi-r1-board-support.patch \
     file://0003-sunxi-H6-Enable-Ethernet-on-Orange-Pi-One-Plus.patch \
-    file://0004-mangopi-mq-r-t113-Fix-serial-console.patch \
     file://0004-OrangePi-3-LTS-support.patch \
     file://boot.cmd \
 "
+
+SRC_URI:append:mangopi-mq-t-t113 = " \
+    file://0004-mangopi-mq-r-t113-Fix-serial-console.patch \
+    "
 
 UBOOT_ENV_SUFFIX:sunxi = "scr"
 UBOOT_ENV:sunxi = "boot"
