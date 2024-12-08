@@ -1,7 +1,7 @@
 SECTION = "kernel"
 LICENSE = "GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://COPYING;md5=bbea815ee2795b2f4230826c0c6b8814"
-COMPATIBLE_MACHINE = "(sun4i|sun5i|sun7i|sun8i|sun50i)"
+COMPATIBLE_MACHINE = "(sun4i|sun5i|sun7i|sun8i|sun9i|sun50i)"
 
 inherit kernel
 

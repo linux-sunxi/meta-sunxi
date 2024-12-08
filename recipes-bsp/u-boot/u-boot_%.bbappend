@@ -3,7 +3,7 @@ FILESEXTRAPATHS:prepend:sunxi := "${THISDIR}/files:"
 DEPENDS:append:sunxi = " bc-native dtc-native swig-native python3-native flex-native bison-native "
 DEPENDS:append:sun50i = " trusted-firmware-a"
 
-COMPATIBLE_MACHINE:sunxi = "(sun4i|sun5i|sun7i|sun8i|sun50i)"
+COMPATIBLE_MACHINE:sunxi = "(sun4i|sun5i|sun7i|sun8i|sun9i|sun50i)"
 
 DEFAULT_PREFERENCE:sun4i = "1"
 DEFAULT_PREFERENCE:sun5i = "1"
