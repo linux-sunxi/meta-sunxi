@@ -19,6 +19,10 @@ SRC_URI:append:sunxi = " \
     file://boot.cmd \
 "
 
+SRC_URI:append:sun9i = " \
+    file://0001-Revert-sunxi-board-simplify-early-PMIC-setup-conditi.patch \
+"
+
 SRC_URI:append:mangopi-mq-t-t113 = " \
     file://0004-mangopi-mq-r-t113-Fix-serial-console.patch \
     "
