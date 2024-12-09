@@ -12,10 +12,14 @@ DEFAULT_PREFERENCE:sun8i = "1"
 DEFAULT_PREFERENCE:sun50i = "1"
 
 SRC_URI:append:sunxi = " \
-        file://0001-nanopi_neo_air_defconfig-Enable-eMMC-support.patch \
-	file://0002-Added-nanopi-r1-board-support.patch \
-	file://0003-sunxi-H6-Enable-Ethernet-on-Orange-Pi-One-Plus.patch \
-        file://boot.cmd \
+    file://0001-nanopi_neo_air_defconfig-Enable-eMMC-support.patch \
+    file://0002-Added-nanopi-r1-board-support.patch \
+    file://0003-sunxi-H6-Enable-Ethernet-on-Orange-Pi-One-Plus.patch \
+    file://boot.cmd \
+"
+
+SRC_URI:append:sun9i = " \
+    file://0001-Revert-sunxi-board-simplify-early-PMIC-setup-conditi.patch \
 "
 
 UBOOT_ENV_SUFFIX:sunxi = "scr"

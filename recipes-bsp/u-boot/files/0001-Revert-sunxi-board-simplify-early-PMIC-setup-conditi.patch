@@ -1,0 +1,108 @@
+From b75fa85deb7099916493ff9cc582c0956121238e Mon Sep 17 00:00:00 2001
+From: Leon Anavi <leon.anavi@konsulko.com>
+Date: Mon, 9 Dec 2024 14:02:07 +0000
+Subject: [PATCH] Revert "sunxi: board: simplify early PMIC setup conditions"
+
+This reverts commit ffb02942fab024d4a9b6a3346b9791457e272ff4.
+
+Upstream-Status: Inappropriate
+
+Signed-off-by: Leon Anavi <leon.anavi@konsulko.com>
+---
+ board/sunxi/board.c   | 32 ++++++++++++++++++--------------
+ drivers/power/Kconfig |  2 +-
+ 2 files changed, 19 insertions(+), 15 deletions(-)
+
+diff --git a/board/sunxi/board.c b/board/sunxi/board.c
+index 02fc3eef00..39ecbe988f 100644
+--- a/board/sunxi/board.c
++++ b/board/sunxi/board.c
+@@ -581,46 +581,50 @@ void sunxi_board_init(void)
+ 		}
+ 	}
+ 
+-#ifdef CONFIG_AXP_DCDC1_VOLT
++#if defined CONFIG_AXP221_POWER || defined CONFIG_AXP809_POWER || \
++	defined CONFIG_AXP818_POWER
+ 	power_failed |= axp_set_dcdc1(CONFIG_AXP_DCDC1_VOLT);
+-	power_failed |= axp_set_dcdc5(CONFIG_AXP_DCDC5_VOLT);
+ #endif
+-#ifdef CONFIG_AXP_DCDC2_VOLT
++#if !defined(CONFIG_AXP305_POWER)
+ 	power_failed |= axp_set_dcdc2(CONFIG_AXP_DCDC2_VOLT);
+ 	power_failed |= axp_set_dcdc3(CONFIG_AXP_DCDC3_VOLT);
+ #endif
+-#ifdef CONFIG_AXP_DCDC4_VOLT
++#if !defined(CONFIG_AXP209_POWER) && !defined(CONFIG_AXP818_POWER)
+ 	power_failed |= axp_set_dcdc4(CONFIG_AXP_DCDC4_VOLT);
+ #endif
++#if defined CONFIG_AXP221_POWER || defined CONFIG_AXP809_POWER || \
++	defined CONFIG_AXP818_POWER
++	power_failed |= axp_set_dcdc5(CONFIG_AXP_DCDC5_VOLT);
++#endif
+ 
+-#ifdef CONFIG_AXP_ALDO1_VOLT
++#if defined CONFIG_AXP221_POWER || defined CONFIG_AXP809_POWER || \
++	defined CONFIG_AXP818_POWER
+ 	power_failed |= axp_set_aldo1(CONFIG_AXP_ALDO1_VOLT);
+ #endif
+-#ifdef CONFIG_AXP_ALDO2_VOLT
++#if !defined(CONFIG_AXP305_POWER)
+ 	power_failed |= axp_set_aldo2(CONFIG_AXP_ALDO2_VOLT);
+ #endif
+-#ifdef CONFIG_AXP_ALDO3_VOLT
++#if !defined(CONFIG_AXP152_POWER) && !defined(CONFIG_AXP305_POWER)
+ 	power_failed |= axp_set_aldo3(CONFIG_AXP_ALDO3_VOLT);
+ #endif
+-#ifdef CONFIG_AXP_ALDO4_VOLT
++#ifdef CONFIG_AXP209_POWER
+ 	power_failed |= axp_set_aldo4(CONFIG_AXP_ALDO4_VOLT);
+ #endif
+ 
+-#ifdef CONFIG_AXP_DLDO1_VOLT
++#if defined(CONFIG_AXP221_POWER) || defined(CONFIG_AXP809_POWER) || \
++	defined(CONFIG_AXP818_POWER)
+ 	power_failed |= axp_set_dldo(1, CONFIG_AXP_DLDO1_VOLT);
+ 	power_failed |= axp_set_dldo(2, CONFIG_AXP_DLDO2_VOLT);
+-#endif
+-#ifdef CONFIG_AXP_DLDO3_VOLT
++#if !defined CONFIG_AXP809_POWER
+ 	power_failed |= axp_set_dldo(3, CONFIG_AXP_DLDO3_VOLT);
+ 	power_failed |= axp_set_dldo(4, CONFIG_AXP_DLDO4_VOLT);
+ #endif
+-#ifdef CONFIG_AXP_ELDO1_VOLT
+ 	power_failed |= axp_set_eldo(1, CONFIG_AXP_ELDO1_VOLT);
+ 	power_failed |= axp_set_eldo(2, CONFIG_AXP_ELDO2_VOLT);
+ 	power_failed |= axp_set_eldo(3, CONFIG_AXP_ELDO3_VOLT);
+ #endif
+ 
+-#ifdef CONFIG_AXP_FLDO1_VOLT
++#ifdef CONFIG_AXP818_POWER
+ 	power_failed |= axp_set_fldo(1, CONFIG_AXP_FLDO1_VOLT);
+ 	power_failed |= axp_set_fldo(2, CONFIG_AXP_FLDO2_VOLT);
+ 	power_failed |= axp_set_fldo(3, CONFIG_AXP_FLDO3_VOLT);
+@@ -629,7 +633,7 @@ void sunxi_board_init(void)
+ #if defined CONFIG_AXP809_POWER || defined CONFIG_AXP818_POWER
+ 	power_failed |= axp_set_sw(IS_ENABLED(CONFIG_AXP_SW_ON));
+ #endif
+-#endif	/* CONFIG_AXPxxx_POWER */
++#endif
+ 	printf("DRAM:");
+ 	gd->ram_size = sunxi_dram_init();
+ 	printf(" %d MiB\n", (int)(gd->ram_size >> 20));
+diff --git a/drivers/power/Kconfig b/drivers/power/Kconfig
+index 83cb31c937..7f3b990d23 100644
+--- a/drivers/power/Kconfig
++++ b/drivers/power/Kconfig
+@@ -180,7 +180,7 @@ config AXP_DCDC3_VOLT
+ 
+ config AXP_DCDC4_VOLT
+ 	int "axp pmic dcdc4 voltage"
+-	depends on AXP152_POWER || AXP221_POWER || AXP809_POWER || AXP305_POWER
++	depends on AXP152_POWER || AXP221_POWER || AXP809_POWER || AXP818_POWER || AXP305_POWER
+ 	default 1250 if AXP152_POWER
+ 	default 1200 if MACH_SUN6I
+ 	default 0 if MACH_SUN8I
+-- 
+2.47.0
+
