@@ -3,7 +3,7 @@ FILESEXTRAPATHS:prepend:sunxi := "${THISDIR}/files:"
 DEPENDS:append:sunxi = " bc-native dtc-native swig-native python3-native flex-native bison-native "
 DEPENDS:append:sun50i = " trusted-firmware-a"
 
-COMPATIBLE_MACHINE:sunxi = "(sun4i|sun5i|sun7i|sun8i|sun50i)"
+COMPATIBLE_MACHINE:sunxi = "(sun4i|sun5i|sun7i|sun8i|sun9i|sun50i)"
 
 DEFAULT_PREFERENCE:sun4i = "1"
 DEFAULT_PREFERENCE:sun5i = "1"
@@ -12,10 +12,14 @@ DEFAULT_PREFERENCE:sun8i = "1"
 DEFAULT_PREFERENCE:sun50i = "1"
 
 SRC_URI:append:sunxi = " \
-        file://0001-nanopi_neo_air_defconfig-Enable-eMMC-support.patch \
-	file://0002-Added-nanopi-r1-board-support.patch \
-	file://0003-sunxi-H6-Enable-Ethernet-on-Orange-Pi-One-Plus.patch \
-        file://boot.cmd \
+    file://0001-nanopi_neo_air_defconfig-Enable-eMMC-support.patch \
+    file://0002-Added-nanopi-r1-board-support.patch \
+    file://0003-sunxi-H6-Enable-Ethernet-on-Orange-Pi-One-Plus.patch \
+    file://boot.cmd \
+"
+
+SRC_URI:append:sun9i = " \
+    file://0001-Revert-sunxi-board-simplify-early-PMIC-setup-conditi.patch \
 "
 
 UBOOT_ENV_SUFFIX:sunxi = "scr"
