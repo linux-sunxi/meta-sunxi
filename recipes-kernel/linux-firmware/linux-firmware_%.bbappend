@@ -11,3 +11,15 @@ do_install:append:sunxi() {
 	ln -sf -r ${D}${nonarch_base_libdir}/firmware/brcm/brcmfmac43430-sdio.AP6212.txt ${D}${nonarch_base_libdir}/firmware/brcm/brcmfmac43430-sdio.xunlong,orangepi-zero-plus2-h3.txt
 	ln -sf -r ${D}${nonarch_base_libdir}/firmware/brcm/brcmfmac43430-sdio.AP6212.txt ${D}${nonarch_base_libdir}/firmware/brcm/brcmfmac43430-sdio.friendlyarm,nanopi-neo-plus2.txt
 }
+
+do_install:append:cubieboard4() {
+	ln -sf -r ${D}${nonarch_base_libdir}/firmware/brcm/brcmfmac4330-sdio.bin ${D}${nonarch_base_libdir}/firmware/brcm/brcmfmac4330-sdio.cubietech,a80-cubieboard4.bin
+}
+
+do_install:append:merrii-a80-optimus() {
+	ln -sf -r ${D}${nonarch_base_libdir}/firmware/brcm/brcmfmac4330-sdio.bin ${D}${nonarch_base_libdir}/firmware/brcm/brcmfmac4330-sdio.merrii,a80-optimus.bin
+}
+
+do_install:append:sun9i() {
+	ln -sf -r ${D}${nonarch_base_libdir}/firmware/brcm/brcmfmac4330-sdio.Prowise-PT301.txt ${D}${nonarch_base_libdir}/firmware/brcm/brcmfmac4330-sdio.txt
+}
