@@ -18,9 +18,8 @@ SRC_URI:append:sunxi = " \
     file://0004-OrangePi-3-LTS-support.patch \
     file://boot.cmd \
 "
-
 SRC_URI:append:sun9i = " \
-    file://0001-Revert-sunxi-board-simplify-early-PMIC-setup-conditi.patch \
+    file://0001-sunxi-board-Fix-early-PMIC-setup-conditions.patch \
 "
 
 SRC_URI:append:mangopi-mq-t-t113 = " \
