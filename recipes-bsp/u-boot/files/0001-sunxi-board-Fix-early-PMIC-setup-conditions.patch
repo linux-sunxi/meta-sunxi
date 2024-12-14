@@ -1,0 +1,41 @@
+From f4dde09fa41eb538b743ee2104c1e2e10cc7e13f Mon Sep 17 00:00:00 2001
+From: Leon Anavi <leon.anavi@konsulko.com>
+Date: Sat, 14 Dec 2024 10:59:09 +0000
+Subject: [PATCH] sunxi: board: Fix early PMIC setup conditions
+
+Patch provided by Andre Przywara through the U-Boot mailing list:
+https://lists.denx.de/pipermail/u-boot/2024-December/575050.html
+
+Upstream-Status: Pending
+
+Suggested-by: Andre Przywara <andre.przywara@arm.com>
+Signed-off-by: Leon Anavi <leon.anavi@konsulko.com>
+---
+ board/sunxi/board.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/board/sunxi/board.c b/board/sunxi/board.c
+index 961cdcde74..d6759fe853 100644
+--- a/board/sunxi/board.c
++++ b/board/sunxi/board.c
+@@ -577,7 +577,6 @@ void sunxi_board_init(void)
+ 
+ #ifdef CONFIG_AXP_DCDC1_VOLT
+ 	power_failed |= axp_set_dcdc1(CONFIG_AXP_DCDC1_VOLT);
+-	power_failed |= axp_set_dcdc5(CONFIG_AXP_DCDC5_VOLT);
+ #endif
+ #ifdef CONFIG_AXP_DCDC2_VOLT
+ 	power_failed |= axp_set_dcdc2(CONFIG_AXP_DCDC2_VOLT);
+@@ -586,6 +585,9 @@ void sunxi_board_init(void)
+ #ifdef CONFIG_AXP_DCDC4_VOLT
+ 	power_failed |= axp_set_dcdc4(CONFIG_AXP_DCDC4_VOLT);
+ #endif
++#ifdef CONFIG_AXP_DCDC5_VOLT
++	power_failed |= axp_set_dcdc5(CONFIG_AXP_DCDC5_VOLT);
++#endif
+ 
+ #ifdef CONFIG_AXP_ALDO1_VOLT
+ 	power_failed |= axp_set_aldo1(CONFIG_AXP_ALDO1_VOLT);
+-- 
+2.47.1
+
