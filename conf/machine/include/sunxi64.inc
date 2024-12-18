@@ -46,7 +46,7 @@ do_fix_device_tree_location() {
 addtask do_fix_device_tree_location after do_write_wks_template before do_image_wic
 
 SUNXI_BOOT_SPACE ?= "40"
-IMAGE_BOOT_FILES ?= "${KERNEL_IMAGETYPE} boot.scr ${KERNEL_DEVICETREE}"
+IMAGE_BOOT_FILES ?= "${KERNEL_IMAGETYPE} ${KERNEL_DEVICETREE}"
 
 WKS_FILES ?= "sunxi-sdcard-image.wks.in"
 WKS_FILE_DEPENDS ?= "virtual/kernel u-boot"

@@ -14,5 +14,7 @@
 #
 
 part u-boot --source rawcopy --sourceparams="file=${SPL_BINARY}" --ondisk mmcblk0 --no-table --align 8
-part /boot --source bootimg-partition --ondisk mmcblk0 --fstype=vfat --label boot --active --align 2048 --fixed-size ${SUNXI_BOOT_SPACE}
-part /     --source rootfs --ondisk mmcblk0 --fstype=ext4 --align 2048
+part /boot --source bootimg-partition --sourceparams="loader=u-boot" --fstype=vfat --label boot --active --align 2048 --fixed-size ${SUNXI_BOOT_SPACE}
+part /     --source rootfs --fstype=ext4 --align 2048 --use-uuid
+
+bootloader --append="console=ttyS0,115200 console=tty1 panic=10"

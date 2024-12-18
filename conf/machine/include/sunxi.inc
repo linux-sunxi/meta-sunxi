@@ -38,7 +38,7 @@ MACHINE_FEATURES ?= "alsa apm keyboard rtc serial screen usbgadget usbhost vfat"
 # but it is missing here - can be added somehow (how?) if required
 SUNXI_FEX_FILE ?= " "
 SUNXI_BOOT_SPACE ?= "40"
-IMAGE_BOOT_FILES ?= "${KERNEL_IMAGETYPE} boot.scr"
+IMAGE_BOOT_FILES ?= "${KERNEL_IMAGETYPE}"
 # ship fex file for sunxi kernel, devicetree file for mainline kernel
 IMAGE_BOOT_FILES += "${@bb.utils.contains('PREFERRED_PROVIDER_virtual/kernel', 'linux-sunxi', '${SUNXI_FEX_FILE}', '${KERNEL_DEVICETREE}', d)}"
 WKS_FILES ?= "sunxi-sdcard-image.wks.in"
