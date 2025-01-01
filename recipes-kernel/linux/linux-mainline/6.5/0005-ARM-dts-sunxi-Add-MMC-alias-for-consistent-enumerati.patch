@@ -1,0 +1,31 @@
+From 8b245b30a451bc4a4081759a6918b630ec075a7c Mon Sep 17 00:00:00 2001
+From: Stefan Gloor <code@stefan-gloor.ch>
+Date: Thu, 19 Dec 2024 10:34:54 +0100
+Subject: [PATCH] ARM: dts: sunxi: Add MMC alias for consistent enumeration
+
+Add explicit alias for MMC devices, so that (e)MMC and micro SD cards
+are enumerated consistenly. This should fix spurious boot failures when
+specifying a hard-coded root partition, e.g., mmcblk0p2.
+
+Signed-off-by: Stefan Gloor <code@stefan-gloor.ch>
+Upstream-Status: Denied https://lore.kernel.org/lkml/CAGb2v67dBhL3-AhLeHg3xOgbNZ3qu0aj9+kA+MoOMRYfr_Z_zQ@mail.gmail.com/
+---
+ arch/arm/boot/dts/allwinner/sun7i-a20-olinuxino-micro.dts | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/arch/arm/boot/dts/allwinner/sun7i-a20-olinuxino-micro.dts b/arch/arm/boot/dts/allwinner/sun7i-a20-olinuxino-micro.dts
+index a1b89b2a2999..9cd1eb690134 100644
+--- a/arch/arm/boot/dts/allwinner/sun7i-a20-olinuxino-micro.dts
++++ b/arch/arm/boot/dts/allwinner/sun7i-a20-olinuxino-micro.dts
+@@ -60,6 +60,8 @@ aliases {
+ 		serial2 = &uart7;
+ 		spi0 = &spi1;
+ 		spi1 = &spi2;
++		mmc0 = &mmc0;
++		mmc1 = &mmc3;
+ 	};
+ 
+ 	chosen {
+-- 
+2.45.2
+
