@@ -10,6 +10,7 @@ do_install:append:sunxi() {
 	ln -sf -r ${D}${nonarch_base_libdir}/firmware/brcm/brcmfmac43430-sdio.AP6212.txt ${D}${nonarch_base_libdir}/firmware/brcm/brcmfmac43430-sdio.xunlong,orangepi-zero-plus2.txt
 	ln -sf -r ${D}${nonarch_base_libdir}/firmware/brcm/brcmfmac43430-sdio.AP6212.txt ${D}${nonarch_base_libdir}/firmware/brcm/brcmfmac43430-sdio.xunlong,orangepi-zero-plus2-h3.txt
 	ln -sf -r ${D}${nonarch_base_libdir}/firmware/brcm/brcmfmac43430-sdio.AP6212.txt ${D}${nonarch_base_libdir}/firmware/brcm/brcmfmac43430-sdio.friendlyarm,nanopi-neo-plus2.txt
+	ln -sf -r ${D}${nonarch_base_libdir}/firmware/brcm/brcmfmac43430-sdio.AP6212.txt ${D}${nonarch_base_libdir}/firmware/brcm/brcmfmac43430-sdio.sinovoip,bpi-m2-berry.txt
 }
 
 do_install:append:cubieboard4() {
