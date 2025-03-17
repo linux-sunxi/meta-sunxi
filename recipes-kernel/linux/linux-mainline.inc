@@ -57,6 +57,7 @@ SOURCES_K65 = " \
 	file://6.5/0003-dts-allwinner-bananapi-m2-zero-Enforce-consistent-MM.patch \
 	file://6.5/0004-dts-allwinner-bananapi-m64-Consistent-nodes-for-mmc-devices.patch \
 	file://6.5/0005-ARM-dts-sunxi-Add-MMC-alias-for-consistent-enumerati.patch \
+	file://6.5/0006-dts-allwinner-orangepi-zero-mmc-aliases-for-consiste.patch \
 "
 
 SOURCES = " \
