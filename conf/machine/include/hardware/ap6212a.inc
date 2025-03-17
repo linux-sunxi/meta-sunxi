@@ -3,3 +3,5 @@
 
 MACHINE_EXTRA_RRECOMMENDS:append = " kernel-module-brcmfmac"
 MACHINE_EXTRA_RDEPENDS:append = " linux-firmware-bcm43430"
+
+MACHINE_FEATURES:append = " bluetooth wifi"
