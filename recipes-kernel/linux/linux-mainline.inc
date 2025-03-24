@@ -48,23 +48,14 @@ SRC_URI = "https://www.kernel.org/pub/linux/kernel/v${KRELEASE}.x/linux-${PV}.ta
 	   file://sunxi-kmeta;type=kmeta;name=sunxi-kmeta;destsuffix=sunxi-kmeta \
 "
 
-# append patches for kernels before 6.5 and after based on version
-SRC_URI += "${@oe.utils.ifelse(d.getVar('KERNEL_DTB_PREFIX') == '1', d.getVar('SOURCES_K65'), d.getVar('SOURCES'))}"
-
-SOURCES_K65 = " \
-	file://6.5/0001-dts-orangepi-zero-Add-wifi-support.patch \
-	file://6.5/0002-dts-nanopi-neo-air-Add-camera-support.patch \
-	file://6.5/0003-dts-allwinner-bananapi-m2-zero-Enforce-consistent-MM.patch \
-	file://6.5/0004-dts-allwinner-bananapi-m64-Consistent-nodes-for-mmc-devices.patch \
-	file://6.5/0005-ARM-dts-sunxi-Add-MMC-alias-for-consistent-enumerati.patch \
-	file://6.5/0006-dts-allwinner-orangepi-zero-mmc-aliases-for-consiste.patch \
-"
-
-SOURCES = " \
-	file://0001-dts-orange-pi-zero-Add-wifi-support.patch \
-	file://0002-dts-nanopi-neo-air-add-camera.patch \
-	file://0003-dts-allwinner-bananapi-m2-zreo-Enforce-consistent-MM.patch \
-	file://0004-dts-allwinner-bananapi-m64-Consistent-nodes-for-mmc-devices.patch \
+# patches
+SRC_URI:append = " \
+	file://patches/0001-dts-orangepi-zero-Add-wifi-support.patch \
+	file://patches/0002-dts-nanopi-neo-air-Add-camera-support.patch \
+	file://patches/0003-dts-allwinner-bananapi-m2-zero-Enforce-consistent-MM.patch \
+	file://patches/0004-dts-allwinner-bananapi-m64-Consistent-nodes-for-mmc-devices.patch \
+	file://patches/0005-ARM-dts-sunxi-Add-MMC-alias-for-consistent-enumerati.patch \
+	file://patches/0006-dts-allwinner-orangepi-zero-mmc-aliases-for-consiste.patch \
 "
 
 SRC_URI:append:use-mailine-graphics = " file://drm.cfg"
