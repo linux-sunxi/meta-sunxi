@@ -9,24 +9,6 @@ require linux.inc
 
 LINUX_VERSION = "${PV}"
 
-KERNEL_DTB_PREFIX = "0"
-
-python() {
-    # return version in int form
-    def kernel_version():
-        ver = d.getVar('PV', True).split('.')
-        return int("".join(ver[0])),int("".join(ver[1]))
-
-    # kernel 6.5 have updated dts path add 'allwinner' prefix automatically
-    major, minor = kernel_version()
-    if major >= 6 and minor >= 5:
-        dt = d.getVar('KERNEL_DEVICETREE', True)
-        if not "allwinner" in dt:
-            dt = "allwinner/{0}".format(dt)
-            d.setVar('KERNEL_DEVICETREE', dt)
-        d.setVar('KERNEL_DTB_PREFIX', "1")
-}
-
 # Since we're not using git, this doesn't make a difference, but we need to fill
 # in something or kernel-yocto.bbclass will fail.
 KBRANCH ?= "master"
