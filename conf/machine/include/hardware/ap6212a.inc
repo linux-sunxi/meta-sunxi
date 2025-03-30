@@ -6,4 +6,4 @@ MACHINE_EXTRA_RDEPENDS:append = " linux-firmware-bcm43430 armbian-firmware-ap621
 
 MACHINE_FEATURES:append = " bluetooth wifi"
 
-KERNEL_FEATURES:append = "features/ap6212/ap6212.scc"
+KERNEL_FEATURES:append = " features/ap6212/ap6212.scc"
