@@ -1,0 +1,3 @@
+# Optional patch for 3 lts that deactivates external 32Khz crystals and fallback to internal clock
+# This fix rtc problems at the cost of clock accuracy on faulty boards
+patch fix-orange-pi-3lts-rtc-on-faulty-boards.patch

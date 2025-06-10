@@ -1,0 +1,18 @@
+# Kmeta for uwe5622
+# common patches for kernel versions 6.1, 6.5, 6.6 & 6.7
+# source: armbian misc drivers
+
+# common patches to be appliend after kernel version specific ones
+
+patch uwe5622-warnings.patch
+patch uwe5622-park-link-v6.1-post.patch
+patch uwe5622-v6.1.patch
+patch uwe5622-fix-setting-mac-address-for-netdev.patch
+patch wireless-uwe5622-Fix-compilation-with-6.7-kernel.patch
+patch wireless-uwe5622-reduce-system-load.patch
+
+# Custom: Add driver to makefile and patch Makefiles to make it work with yocto.
+patch add-uwe5622-to-wireless-makefile.patch
+patch fix-makefiles-for-yocto-build.patch
+
+kconf harware uwe5622-fragment.cfg

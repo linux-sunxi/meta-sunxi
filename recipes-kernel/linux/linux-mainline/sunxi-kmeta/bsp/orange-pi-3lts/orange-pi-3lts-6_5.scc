@@ -1,0 +1,8 @@
+# K metadata for orangepi lts
+#  version 6.5 
+
+patch Input-axp20x-pek-allow-wakeup-after-shutdown-6_5.patch
+patch mfd-Add-support-for-X-Powers-AC200-EPHY-syscon.patch
+patch mfd-Add-support-for-X-Powers-AC200.patch
+
+include orange-pi-3lts-common.scc

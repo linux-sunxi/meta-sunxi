@@ -1,0 +1,32 @@
+From a2d765aab2989ba080b8f63cb0489d6a531cb3fd Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Oliver=20K=C3=A4stner?= <git@oliver-kaestner.de>
+Date: Sun, 16 Mar 2025 22:36:53 +0100
+Subject: [PATCH] dts: allwinner: orangepi-zero: mmc aliases for consistent
+ enumeration
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This fixes random boot failures.
+
+Upstream-Status: Inappropriate [https://github.com/linux-sunxi/meta-sunxi/pull/431]
+
+Signed-off-by: Oliver Kästner <git@oliver-kaestner.de>
+---
+ arch/arm/boot/dts/allwinner/sun8i-h2-plus-orangepi-zero.dts | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/arch/arm/boot/dts/allwinner/sun8i-h2-plus-orangepi-zero.dts b/arch/arm/boot/dts/allwinner/sun8i-h2-plus-orangepi-zero.dts
+index ca94e313f..570a88327 100644
+--- a/arch/arm/boot/dts/allwinner/sun8i-h2-plus-orangepi-zero.dts
++++ b/arch/arm/boot/dts/allwinner/sun8i-h2-plus-orangepi-zero.dts
+@@ -59,6 +59,9 @@ aliases {
+ 		/* ethernet0 is the H3 emac, defined in sun8i-h3.dtsi */
+ 		ethernet0 = &emac;
+ 		ethernet1 = &xr819;
++		mmc0 = &mmc0; /* microSD */
++		mmc1 = &mmc1; /* XR819 WiFi */
++		mmc2 = &mmc2;
+ 	};
+ 
+ 	chosen {

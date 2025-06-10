@@ -1,0 +1,30 @@
+From bf813915bf480154c707e0be14016cef94adbd95 Mon Sep 17 00:00:00 2001
+From: Marek Belisko <marek.belisko@gmail.com>
+Date: Tue, 7 May 2024 11:27:08 +0200
+Subject: [PATCH] mangopi-mq-r-t113: Fix serial console
+
+Serial console is on uart3 not on uart0.
+
+Upstream-Status: Inappropriate (for this board only)
+
+Signed-off-by: Marek Belisko <marek.belisko@gmail.com>
+---
+ include/configs/sunxi-common.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/configs/sunxi-common.h b/include/configs/sunxi-common.h
+index b8ca77d031..4e4808d2c1 100644
+--- a/include/configs/sunxi-common.h
++++ b/include/configs/sunxi-common.h
+@@ -324,7 +324,7 @@
+ 	MEM_LAYOUT_ENV_EXTRA_SETTINGS \
+ 	DFU_ALT_INFO_RAM \
+ 	"fdtfile=" FDTFILE "\0" \
+-	"console=ttyS0,115200\0" \
++	"console=ttyS3,115200\0" \
+ 	"uuid_gpt_esp=" UUID_GPT_ESP "\0" \
+ 	"uuid_gpt_system=" UUID_GPT_SYSTEM "\0" \
+ 	"partitions=" PARTS_DEFAULT "\0" \
+-- 
+2.25.1
+

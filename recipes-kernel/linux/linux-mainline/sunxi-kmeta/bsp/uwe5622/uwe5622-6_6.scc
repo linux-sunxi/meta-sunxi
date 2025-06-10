@@ -1,0 +1,9 @@
+# Kmeta for uwe5622
+# for kernel 6.6 only
+
+include uwe5622-6_5.scc
+
+patch uwe5622-v6.6-fix-tty-sdio.patch
+
+# Add driver for MAC address fix
+patch 0001-drv-fix-MAC-address-for-UWE5622.patch

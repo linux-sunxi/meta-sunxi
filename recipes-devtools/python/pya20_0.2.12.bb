@@ -13,7 +13,7 @@ SRC_URI = "https://pypi.python.org/packages/source/p/pyA20/pyA20-${PV}.tar.gz \
           "
 S = "${WORKDIR}/pyA20-${PV}"
 
-inherit distutils3
+inherit setuptools3
 
 do_compile:prepend() { 
 cp ${WORKDIR}/mapping.h ${S}/pyA20/gpio/mapping.h

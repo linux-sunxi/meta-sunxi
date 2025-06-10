@@ -1,0 +1,25 @@
+From e5017f74e32f644f9c707f788b2aaf47a98b820c Mon Sep 17 00:00:00 2001
+From: OpenEmbedded <oe.patch@oe>
+Date: Wed, 6 Dec 2023 00:38:22 +0100
+Subject: [PATCH 2/2] add uwe5622 to wireless makefile
+
+---
+ drivers/net/wireless/Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/net/wireless/Makefile b/drivers/net/wireless/Makefile
+index a61cf6c90..455cf9296 100644
+--- a/drivers/net/wireless/Makefile
++++ b/drivers/net/wireless/Makefile
+@@ -2,7 +2,7 @@
+ #
+ # Makefile for the Linux Wireless network device drivers.
+ #
+-
++obj-$(CONFIG_SPARD_WLAN_SUPPORT) += uwe5622/
+ obj-$(CONFIG_WLAN_VENDOR_ADMTEK) += admtek/
+ obj-$(CONFIG_WLAN_VENDOR_ATH) += ath/
+ obj-$(CONFIG_WLAN_VENDOR_ATMEL) += atmel/
+-- 
+2.43.0
+
