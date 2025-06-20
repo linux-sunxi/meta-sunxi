@@ -21,7 +21,6 @@ SRC_URI += "git://github.com/linux-sunxi/linux-sunxi.git;branch=sunxi-3.4;protoc
         "
 LIC_FILES_CHKSUM = "file://COPYING;md5=d7810fab7487fb0aad327b76f1be7cd7"
 
-S = "${WORKDIR}/git"
 
 #fix QA issue "Files/directories were installed but not shipped: /usr/src/debug"
 INHIBIT_PACKAGE_DEBUG_SPLIT = "1"

@@ -15,7 +15,6 @@ SRC_URI = "git://github.com/ebutera/gst-plugin-cedar.git;protocol=https;branch=m
 PV = "0.10.1+git${SRCPV}"
 PR = "r1"
 
-S = "${WORKDIR}/git"
 
 FILES:${PN} += "${libdir}/gstreamer-0.10/*.so"
 FILES:${PN}-dbg += "${libdir}/gstreamer-0.10/.debug"

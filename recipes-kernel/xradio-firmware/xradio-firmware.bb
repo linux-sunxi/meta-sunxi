@@ -11,7 +11,6 @@ COMPATIBLE_MACHINE = "orange-pi-zero"
 
 SRC_URI = "git://github.com/armbian/firmware.git;protocol=https;branch=master"
 
-S = "${WORKDIR}/git"
 
 do_install() {
     install -d ${D}${base_libdir}/firmware/xr819

@@ -6,7 +6,6 @@ PV = "1.0+git"
 SRC_URI = "git://github.com/armbian/firmware.git;protocol=https;branch=master"
 SRCREV = "4050e02da2dce2b74c97101f7964ecfb962f5aec"
 
-S = "${WORKDIR}/git"
 
 inherit allarch
 
