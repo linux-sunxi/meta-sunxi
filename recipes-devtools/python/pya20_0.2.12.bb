@@ -11,7 +11,7 @@ COMPATIBLE_MACHINE = "(olinuxino-a13|olinuxino-a10|olinuxino-a20|olinuxino-a10li
 SRC_URI = "https://pypi.python.org/packages/source/p/pyA20/pyA20-${PV}.tar.gz \
            file://mapping.h \
           "
-S = "${WORKDIR}/pyA20-${PV}"
+S = "${UNPACKDIR}/pyA20-${PV}"
 
 inherit setuptools3
 
