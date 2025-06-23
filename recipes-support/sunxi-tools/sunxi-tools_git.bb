@@ -12,7 +12,6 @@ SRCREV = "9a3d62aa0c820b3dd42ba3409b2043f4143683cd"
 
 inherit pkgconfig
 
-
 BBCLASSEXTEND = "native nativesdk"
 
 FILES:${PN} = "${bindir}/*"

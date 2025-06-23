@@ -10,5 +10,3 @@ SRCREV = "ec0680628744f30b8fac35e41a7bd8e23e59c39f"
 
 SRC_URI = "git://github.com/linux-sunxi/libump.git;protocol=https;branch=master"
 
-
-

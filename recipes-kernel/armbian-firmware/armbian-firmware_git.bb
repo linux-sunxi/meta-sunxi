@@ -6,7 +6,6 @@ PV = "1.0+git"
 SRC_URI = "git://github.com/armbian/firmware.git;protocol=https;branch=master"
 SRCREV = "4050e02da2dce2b74c97101f7964ecfb962f5aec"
 
-
 inherit allarch
 
 do_compile[noexec] = "1"
@@ -27,7 +26,6 @@ FILES:${PN}-ap6212 = " \
     ${nonarch_base_libdir}/firmware/ap6212/* \
     ${nonarch_base_libdir}/firmware/brcm/BCM43430A1.hcd \
 "
-
 
 # Make armbian-firmware depend on all of the split-out packages.
 python populate_packages:prepend () {

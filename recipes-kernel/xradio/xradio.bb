@@ -17,7 +17,6 @@ SRC_URI = "\
 	   git://github.com/fifteenhex/xradio.git;protocol=http;branch=master \
           "
 
-
 EXTRA_OEMAKE += "-C ${STAGING_KERNEL_DIR} M=${S}"
 
 KERNEL_MODULE_AUTOLOAD += "xradio_wlan"

@@ -11,6 +11,5 @@ SRC_URI = "git://github.com/robclark/libdri2.git;protocol=http;branch=master"
 
 SRCREV = "4f1eef3183df2b270c3d5cbef07343ee5127a6a4"
 
-
 inherit autotools pkgconfig
 
