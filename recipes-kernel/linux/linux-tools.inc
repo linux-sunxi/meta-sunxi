@@ -24,7 +24,6 @@ fakeroot do_install_perf () {
     fi
 }
 
-
 # perf tasks
 addtask compile_perf after do_compile before do_install
 addtask install_perf after do_install before do_package

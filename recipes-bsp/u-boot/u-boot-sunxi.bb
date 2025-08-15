@@ -31,8 +31,6 @@ PV = "v2014.04+git${SRCPV}"
 # Corresponds 2014.04 in Makefile
 SRCREV = "ea1ac32bf76eb60baef474c2516fc431b381d952"
 
-S = "${WORKDIR}/git"
-
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 SPL_BINARY="u-boot-sunxi-with-spl.bin"

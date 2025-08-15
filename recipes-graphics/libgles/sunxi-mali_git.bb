@@ -29,8 +29,6 @@ SRC_URI = "git://github.com/linux-sunxi/sunxi-mali.git;protocol=https;branch=mas
            file://0001-fix-test-build.patch \
            "
 
-S = "${WORKDIR}/git"
-
 DEPENDS = "libdrm xorgproto libump patchelf-native"
 
 PACKAGECONFIG ??= "${@bb.utils.contains('DISTRO_FEATURES', 'x11', 'x11', '', d)} ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'wayland', '', d)}"
