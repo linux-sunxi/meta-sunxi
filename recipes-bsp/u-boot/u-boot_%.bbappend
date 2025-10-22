@@ -1,4 +1,4 @@
-FILESEXTRAPATHS:prepend:sunxi := "${THISDIR}/files:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
 DEPENDS:append:sunxi = " bc-native dtc-native swig-native python3-native flex-native bison-native "
 DEPENDS:append:sun50i = " trusted-firmware-a"
