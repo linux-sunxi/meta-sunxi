@@ -2,8 +2,7 @@ DESCRIPTION = "UWE5622 Wifi firmware"
 LICENSE = "CC0-1.0"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/${LICENSE};md5=0ceb3372c9595f0a8067e55da801e4a1"
 
-S = "${WORKDIR}/sources"
-UNPACKDIR = "${S}"
+S = "${UNPACKDIR}"
 
 COMPATIBLE_MACHINE = "(orange-pi-zero2|orange-pi-3lts)"
 

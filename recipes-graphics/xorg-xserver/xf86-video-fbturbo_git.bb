@@ -14,8 +14,6 @@ SRCREV = "e094e3c8f9004ca3347694bd05b99d136e8621b9"
 SRC_URI = "git://github.com/ssvb/xf86-video-fbturbo.git;protocol=http;branch=master \
            file://20-fbturbo.conf"
 
-S = "${WORKDIR}/git"
-
 CFLAGS += " -I${STAGING_INCDIR}/xorg "
 
 do_install:append() {

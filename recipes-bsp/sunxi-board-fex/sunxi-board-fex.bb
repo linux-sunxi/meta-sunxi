@@ -13,8 +13,6 @@ SRC_URI = "git://github.com/linux-sunxi/sunxi-boards.git;protocol=https;branch=m
 # Increase PV with SRCREV change
 SRCREV = "af5f938ea14a3614d35ad3d9ab51a5d392117444"
 
-S = "${WORKDIR}/git"
-
 SUNXI_FEX_BIN_IMAGE = "fex-${MACHINE}-${PV}-${PR}.bin"
 SUNXI_FEX_BIN_IMAGE_SYMLINK = "fex-${MACHINE}.bin"
 SUNXI_FEX_BIN_IMAGE_SYMLINK_SIMPLE = "fex.bin"
