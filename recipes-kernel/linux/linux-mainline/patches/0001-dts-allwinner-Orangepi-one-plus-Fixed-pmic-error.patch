@@ -1,0 +1,77 @@
+From aba276a0dabae7dac88a22b5a48488058ab9048c Mon Sep 17 00:00:00 2001
+From: OpenEmbedded <oe.patch@oe>
+Date: Wed, 11 Feb 2026 17:02:49 +0900
+Subject: [PATCH] Fixed pmic error
+
+When kernel is boot, rsb would not probe and initialize axp806 pmic correctly.
+
+Upstream revert it to use i2c bus instream rsb.
+
+Signed-off-by: OpenEmbedded <oe.patch@oe>
+---
+ .../dts/allwinner/sun50i-h6-orangepi.dtsi     | 25 ++++++++++---------
+ 1 file changed, 13 insertions(+), 12 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/allwinner/sun50i-h6-orangepi.dtsi b/arch/arm64/boot/dts/allwinner/sun50i-h6-orangepi.dtsi
+index 92745128f..e34dbb992 100644
+--- a/arch/arm64/boot/dts/allwinner/sun50i-h6-orangepi.dtsi
++++ b/arch/arm64/boot/dts/allwinner/sun50i-h6-orangepi.dtsi
+@@ -32,7 +32,7 @@ hdmi_con_in: endpoint {
+ 		};
+ 	};
+ 
+-	ext_osc32k: ext_osc32k_clk {
++	ext_osc32k: ext-osc32k-clk {
+ 		#clock-cells = <0>;
+ 		compatible = "fixed-clock";
+ 		clock-frequency = <32768>;
+@@ -94,6 +94,7 @@ hdmi_out_con: endpoint {
+ &mmc0 {
+ 	vmmc-supply = <&reg_cldo1>;
+ 	cd-gpios = <&pio 5 6 GPIO_ACTIVE_LOW>;
++	disable-wp;
+ 	bus-width = <4>;
+ 	status = "okay";
+ };
+@@ -112,20 +113,12 @@ &pio {
+ 	vcc-pg-supply = <&reg_aldo1>;
+ };
+ 
+-&r_ir {
+-	status = "okay";
+-};
+-
+-&r_pio {
+-	vcc-pm-supply = <&reg_bldo3>;
+-};
+-
+-&r_rsb {
++&r_i2c {
+ 	status = "okay";
+ 
+-	axp805: pmic@745 {
++	axp805: pmic@36 {
+ 		compatible = "x-powers,axp805", "x-powers,axp806";
+-		reg = <0x745>;
++		reg = <0x36>;
+ 		interrupt-parent = <&r_intc>;
+ 		interrupts = <GIC_SPI 96 IRQ_TYPE_LEVEL_LOW>;
+ 		interrupt-controller;
+@@ -240,6 +233,14 @@ sw {
+ 	};
+ };
+ 
++&r_ir {
++	status = "okay";
++};
++
++&r_pio {
++	vcc-pm-supply = <&reg_bldo3>;
++};
++
+ &rtc {
+ 	clocks = <&ext_osc32k>;
+ };
+-- 
+2.34.1
+
