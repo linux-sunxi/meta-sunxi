@@ -2,11 +2,9 @@
 #
 
 patch clk-Implement-protected-clocks-for-all-OF-clock-prov.patch
-patch Revert-clk-qcom-Support-protected-clocks-property.patch   
 patch rtc-sun6i-Allow-RTC-wakeup-after-shutdown.patch      
 patch firmware-arm_scpi-Support-unidirectional-mailbox-cha.patch
 patch arm64-dts-allwinner-h6-Add-SCPI-protocol.patch   
-patch ASoC-hdmi-codec-fix-channel-allocation.patch               
 patch arm64-dts-h6-deinterlace.patch                               
 patch HACK-h6-Add-HDMI-sound-card.patch                            
 patch arm64-dts-allwinner-h6-Add-AC200-EPHY-related-nodes.patch    
@@ -16,5 +14,6 @@ patch arm64-dts-allwinner-h6-Fix-Cedrus-IOMMU-again.patch
 patch iommu-sun50i-Allow-page-sizes-multiple-of-4096.patch 
 patch OrangePi-3-LTS-support.patch 
 patch arm64-dts-allwinner-Enforce-consistent-MMC-numbering.patch
+patch 0001-clk-config-fixup-of_property_for_each_u32-after-land.patch
 
-kconf harware orange-pi-3lts.cfg
+kconf hardware orange-pi-3lts.cfg

@@ -11,7 +11,7 @@ PREFERRED_PROVIDER_virtual/xserver = "xserver-xorg"
 XSERVER = "xserver-xorg \
            xf86-input-evdev \
            xf86-input-mouse \
-           xf86-input-keyboard"
+           xf86-input-libinput"
 
 PREFERRED_PROVIDER_virtual/kernel ?= "linux-mainline"
 PREFERRED_VERSION_linux-mainline ?= "6.6.%"

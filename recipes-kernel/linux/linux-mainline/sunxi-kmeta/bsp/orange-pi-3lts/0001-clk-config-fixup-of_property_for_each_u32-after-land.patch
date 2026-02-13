@@ -1,0 +1,42 @@
+From 071808589900d4f2f5407a8a638466e75bb35a61 Mon Sep 17 00:00:00 2001
+From: Alexander Sack <asac@pantacor.com>
+Date: Thu, 12 Jun 2025 08:43:13 +0000
+Subject: [PATCH] clk-config: fixup of_property_for_each_u32 after landing of
+ 914ef7d1a702c510d0b59151a9623f9d20c69d2a
+
+---
+ drivers/clk/clk-conf.c | 8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/clk/clk-conf.c b/drivers/clk/clk-conf.c
+index 70b0fdd63..602383b96 100644
+--- a/drivers/clk/clk-conf.c
++++ b/drivers/clk/clk-conf.c
+@@ -16,9 +16,7 @@
+ static int __set_clk_flags(struct device_node *node)
+ {
+ 	struct of_phandle_args clkspec;
+-	struct property *prop;
+ 	int i, index = 0, rc;
+-	const __be32 *cur;
+ 	struct clk *clk;
+ 	u32 nr_cells;
+ 
+@@ -31,11 +29,11 @@ static int __set_clk_flags(struct device_node *node)
+ 	clkspec.np         = node;
+ 	clkspec.args_count = nr_cells;
+ 
+-	of_property_for_each_u32(node, "protected-clocks", prop, cur, clkspec.args[0]) {
++	of_property_for_each_u32(node, "protected-clocks", clkspec.args[0]) {
+ 		/* read the remainder of the clock specifier */
+ 		for (i = 1; i < nr_cells; ++i) {
+-			cur = of_prop_next_u32(prop, cur, &clkspec.args[i]);
+-			if (!cur) {
++			_it.item = of_prop_next_u32(_it.prop, _it.item, &clkspec.args[i]);
++			if (!_it.item) {
+ 				pr_err("clk: invalid value of protected-clocks"
+ 				       " property at %pOF\n", node);
+ 				return -EINVAL;
+-- 
+2.34.1
+
