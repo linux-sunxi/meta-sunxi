@@ -1,0 +1,40 @@
+From d547db3a6067b670995f7479cf6cec49ac09ef94 Mon Sep 17 00:00:00 2001
+From: Mark Choi <afewgoodman.choi@gmail.com>
+Date: Tue, 24 Feb 2026 14:33:42 +0900
+Subject: [PATCH] dts orange pi one plus Add Enable Ethernet
+
+1. Add compatible to specifiy RTL8211.
+This was fixed in U-boot.
+
+https://patchwork.ozlabs.org/project/uboot/patch/20230711003957.658805-2-retpolanne@posteo.net/#3148293
+
+2. Add reset pin definition(PD14) for RTL8211.
+reset pin is required for if up/down function.
+
+Upstream-Status: Pending
+
+Signed-off-by: Mark Choi <afewgoodman.choi@gmail.com>
+---
+ .../boot/dts/allwinner/sun50i-h6-orangepi-one-plus.dts      | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/allwinner/sun50i-h6-orangepi-one-plus.dts b/arch/arm64/boot/dts/allwinner/sun50i-h6-orangepi-one-plus.dts
+index 29a081e72..769716c0e 100644
+--- a/arch/arm64/boot/dts/allwinner/sun50i-h6-orangepi-one-plus.dts
++++ b/arch/arm64/boot/dts/allwinner/sun50i-h6-orangepi-one-plus.dts
+@@ -37,7 +37,11 @@ &emac {
+ 
+ &mdio {
+ 	ext_rgmii_phy: ethernet-phy@1 {
+-		compatible = "ethernet-phy-ieee802.3-c22";
++		compatible = "ethernet-phy-id001c.c915", "ethernet-phy-ieee802.3-c22";
+ 		reg = <1>;
++		reset-gpios = <&pio 3 14 GPIO_ACTIVE_LOW>; /* PD14 */
++		reset-assert-us = <10000>;
++		reset-deassert-us = <50000>;
++
+ 	};
+ };
+-- 
+2.34.1
+
