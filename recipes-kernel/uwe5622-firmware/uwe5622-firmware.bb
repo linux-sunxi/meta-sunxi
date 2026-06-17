@@ -4,7 +4,7 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/${LICENSE};md5=0ceb3372c9595f0a
 
 S = "${UNPACKDIR}"
 
-COMPATIBLE_MACHINE = "(orange-pi-zero2|orange-pi-3lts)"
+COMPATIBLE_MACHINE = "(orange-pi-zero2|orange-pi-zero3|orange-pi-3lts)"
 
 SRC_URI:append = " \
         file://wcnmodem.bin \
