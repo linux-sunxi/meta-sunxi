@@ -35,5 +35,5 @@ EXTRA_OEMAKE:append:sun50i = " BL31=${DEPLOY_DIR_IMAGE}/bl31.bin SCP=/dev/null"
 do_compile:sun50i[depends] += "trusted-firmware-a:do_deploy"
 
 do_compile:append:sunxi() {
-    ${B}/tools/mkimage -C none -A arm -T script -d ${UNPACKDIR}/boot.cmd ${UNPACKDIR}/${UBOOT_ENV_BINARY}
+    ${UBOOT_MKIMAGE} -C none -A arm -T script -d ${UNPACKDIR}/boot.cmd ${UNPACKDIR}/${UBOOT_ENV_BINARY}
 }
