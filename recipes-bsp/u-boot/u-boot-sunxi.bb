@@ -9,9 +9,9 @@ LIC_FILES_CHKSUM = "file://Licenses/gpl-2.0.txt;md5=b234ee4d69f5fce4486a80fdaf4a
 
 COMPATIBLE_MACHINE = "(sun4i|sun5i|sun7i)"
 
-DEFAULT_PREFERENCE_sun4i="1"
-DEFAULT_PREFERENCE_sun5i="1"
-DEFAULT_PREFERENCE_sun7i="1"
+DEFAULT_PREFERENCE_sun4i = "1"
+DEFAULT_PREFERENCE_sun5i = "1"
+DEFAULT_PREFERENCE_sun7i = "1"
 
 # Sunxi U-Boot uses different names for some boards
 UBOOT_MACHINE_olinuxino-a20 = "A20-OLinuXino-Micro_config"
@@ -33,7 +33,7 @@ SRCREV = "ea1ac32bf76eb60baef474c2516fc431b381d952"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
-SPL_BINARY="u-boot-sunxi-with-spl.bin"
+SPL_BINARY = "u-boot-sunxi-with-spl.bin"
 
 do_configure () {
     oe_runmake -C ${S} O=${B} ${UBOOT_MACHINE}
