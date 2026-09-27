@@ -26,7 +26,9 @@ SERIAL_CONSOLES ?= "115200;ttyS0"
 MACHINE_FEATURES ?= "alsa apm keyboard rtc serial screen usbgadget usbhost vfat"
 
 SUNXI_BOOT_SPACE ?= "40"
-IMAGE_BOOT_FILES ?= "${KERNEL_IMAGETYPE} boot.scr ${@d.getVar('KERNEL_DEVICETREE', '').split('/')[-1]}"
+# U-Boot on arm64 always asks for allwinner/<board>.dtb, so keep the
+# directory from KERNEL_DEVICETREE.
+IMAGE_BOOT_FILES ?= "${KERNEL_IMAGETYPE} boot.scr ${@' '.join(os.path.basename(f) + ';' + f for f in (d.getVar('KERNEL_DEVICETREE') or '').split())}"
 
 WKS_FILES ?= "sunxi-sdcard-image.wks.in"
 WKS_FILE_DEPENDS ?= "virtual/kernel u-boot"
