@@ -43,6 +43,10 @@ SRC_URI:append = " \
 SRC_URI:append:use-mailine-graphics = " file://drm.cfg"
 SRC_URI:append:bananapi = " file://axp20x.cfg"
 SRC_URI:append:bananapi-m2-berry = " file://axp20x.cfg"
+SRC_URI:append:bananapi-m2-ultra = " \
+    file://axp20x.cfg \
+    file://patches/0007-drivers-mmc-host-sunxi-mmc-fix-banana-m2-ultra-emmc.patch \
+"
 SRC_URI:append:bananapi-m2-zero = " file://axp20x.cfg"
 SRC_URI:append:cubietruck = " file://axp20x.cfg"
 SRC_URI:append:nanopi-neo-air = " file://cam500b.cfg"
