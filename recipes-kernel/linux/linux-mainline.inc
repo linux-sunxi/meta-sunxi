@@ -55,5 +55,11 @@ SRC_URI:append:orange-pi-prime = " \
 	file://0002-dts-sun50i-h5-orange-pi-prime-add-regulator.patch \
 	file://0003-dts-sun50i-h5-orange-pi-prime-add-rtl8723cs.patch \
 "
+SRC_URI:append:orange-pi-one-plus = " \
+	file://axp20x.cfg \
+	file://patches/0001-dts-allwinner-Orangepi-one-plus-Fixed-pmic-error.patch \
+	file://patches/0002-dts-orange-pi-one-plus-Add-Enable-Ethernet.patch \
+"
+
 
 FILES_${KERNEL_PACKAGE_NAME}-base:append = " ${nonarch_base_libdir}/modules/${KERNEL_VERSION}/modules.builtin.modinfo"
