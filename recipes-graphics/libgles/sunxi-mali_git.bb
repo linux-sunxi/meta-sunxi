@@ -22,7 +22,7 @@ python __anonymous() {
 }
 
 SRCREV = "d343311efc8db166d8371b28494f0f27b6a58724"
-SRC_URI = "git://github.com/linux-sunxi/sunxi-mali.git;protocol=https;branch=master \
+SRC_URI = "gitsm://github.com/linux-sunxi/sunxi-mali.git;protocol=https;branch=master \
            file://0001-Add-EGLSyncKHR-EGLTimeKHR-and-GLChar-definition.patch \
            file://0002-Add-missing-GLchar-definition.patch \
            file://0003-Fix-sed-to-replace-by-the-correct-var.patch \
