@@ -18,7 +18,6 @@ SRC_URI:append:sunxi = " \
     file://0002-Added-nanopi-r1-board-support.patch \
     file://0003-sunxi-H6-Enable-Ethernet-on-Orange-Pi-One-Plus.patch \
     file://0004-OrangePi-3-LTS-support.patch \
-    file://avoid_double_vendor_prefix.patch \
     file://boot.cmd \
 "
 SRC_URI:append:sun9i = " \
