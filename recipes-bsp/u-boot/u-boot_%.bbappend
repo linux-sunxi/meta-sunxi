@@ -33,11 +33,8 @@ UBOOT_ENV_SUFFIX:sunxi = "scr"
 UBOOT_ENV:sunxi = "boot"
 
 EXTRA_OEMAKE:append:sunxi = ' HOSTLDSHARED="${BUILD_CC} -shared ${BUILD_LDFLAGS} ${BUILD_CFLAGS}" '
-EXTRA_OEMAKE:append:sun50i = " BL31=${DEPLOY_DIR_IMAGE}/trusted-firmware-a/bl31.bin SCP=/dev/null"
-EXTRA_OEMAKE:append:sun55i = " BL31=${DEPLOY_DIR_IMAGE}/trusted-firmware-a/bl31.bin SCP=/dev/null"
-
-do_compile:sun50i[depends] += "trusted-firmware-a:do_deploy"
-do_compile:sun55i[depends] += "trusted-firmware-a:do_deploy"
+EXTRA_OEMAKE:append:sun50i = " BL31=${RECIPE_SYSROOT}/firmware/trusted-firmware-a/bl31.bin SCP=/dev/null"
+EXTRA_OEMAKE:append:sun55i = " BL31=${RECIPE_SYSROOT}/firmware/trusted-firmware-a/bl31.bin SCP=/dev/null"
 
 do_compile:append:sunxi() {
     ${UBOOT_MKIMAGE} -C none -A arm -T script -d ${UNPACKDIR}/boot.cmd ${UNPACKDIR}/${UBOOT_ENV_BINARY}
