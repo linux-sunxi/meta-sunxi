@@ -39,8 +39,20 @@ MACHINE_FEATURES ?= "alsa apm keyboard rtc serial screen usbgadget usbhost vfat"
 SUNXI_FEX_FILE ?= " "
 SUNXI_BOOT_SPACE ?= "40"
 IMAGE_BOOT_FILES ?= "${KERNEL_IMAGETYPE} boot.scr"
+
+# U-Boot asks for allwinner/<board>.dtb on SoCs that use OF_UPSTREAM (A10,
+# A13, V3s, T113...) and for <board>.dtb on the rest, so install both.
+def sunxi_dtb_boot_files(d):
+    files = []
+    for dtb in (d.getVar('KERNEL_DEVICETREE') or '').split():
+        name = os.path.basename(dtb)
+        files.append(name)
+        if dtb != name:
+            files.append(name + ';' + dtb)
+    return ' '.join(files)
+
 # ship fex file for sunxi kernel, devicetree file for mainline kernel
-IMAGE_BOOT_FILES += "${@bb.utils.contains('PREFERRED_PROVIDER_virtual/kernel', 'linux-sunxi', '${SUNXI_FEX_FILE}', d.getVar('KERNEL_DEVICETREE', '').split('/')[-1], d)}"
+IMAGE_BOOT_FILES += "${@bb.utils.contains('PREFERRED_PROVIDER_virtual/kernel', 'linux-sunxi', '${SUNXI_FEX_FILE}', sunxi_dtb_boot_files(d), d)}"
 WKS_FILES ?= "sunxi-sdcard-image.wks.in"
 WKS_FILE_DEPENDS ?= "virtual/kernel u-boot"
 # in case of sunxi kernel, sunxi-board-fex must be built prior wic image assembly
