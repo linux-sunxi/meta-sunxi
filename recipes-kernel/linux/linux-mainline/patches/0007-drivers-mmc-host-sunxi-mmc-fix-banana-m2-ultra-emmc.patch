@@ -1,3 +1,11 @@
+From: iaca-os
+Subject: [PATCH] drivers: mmc: host: sunxi-mmc: fix Banana Pi M2 Ultra eMMC
+
+Add sun8i-r40-emmc compatible and config so the eMMC on the
+Banana Pi M2 Ultra (Allwinner R40) is detected.
+
+Upstream-Status: Pending
+
 diff --git a/drivers/mmc/host/sunxi-mmc.c b/drivers/mmc/host/sunxi-mmc.c
 index e0ab5fd63..c3f13e56b 100644
 --- a/drivers/mmc/host/sunxi-mmc.c
