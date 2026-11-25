@@ -1,0 +1,42 @@
+From dd889887f8687f84283b8e65b57c54ca0072abb7 Mon Sep 17 00:00:00 2001
+From: Daniel Drake <ddrake@baylibre.com>
+Date: Wed, 18 Nov 2026 15:42:39 +0000
+Subject: [PATCH] arm64: dts: allwinner: t527: orangepi-4a: Add PHY enable delay
+
+The Motorcomm YT8531 Ethernet PHY on the Orange Pi 4A was not being
+detected: its ID was reading back as zero and preventing ethernet from
+working:
+
+  dwmac-sun55i 4510000.ethernet eth0: cannot attach to PHY (error: -EINVAL)
+
+Add an enable delay to the PHY supply regulator, as was done for the
+same reason on the Radxa Cubie A5E in commit 7076938d20d2 ("arm64: dts:
+allwinner: a527: cubie-a5e: Enable second Ethernet port").
+
+This is also similar to the original vendor DTS which has this regulator
+as always-on.
+
+Fixes: a3606e8a7819 ("arm64: dts: allwinner: t527: orangepi-4a: Enable Ethernet port")
+Signed-off-by: Daniel Drake <ddrake@baylibre.com>
+Link: https://patch.msgid.link/20261118-opi4a-cldo4-ramp-delay-v1-1-9e3368973379@baylibre.com
+Signed-off-by: Chen-Yu Tsai <wens@kernel.org>
+
+Upstream-Status: Backport [https://git.kernel.org/sunxi/linux/c/dd889887f8687f84283b8e65b57c54ca0072abb7]
+Signed-off-by: Daniel Drake <ddrake@baylibre.com>
+---
+ arch/arm64/boot/dts/allwinner/sun55i-t527-orangepi-4a.dts | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/allwinner/sun55i-t527-orangepi-4a.dts b/arch/arm64/boot/dts/allwinner/sun55i-t527-orangepi-4a.dts
+index 7d056d555e36d2b..03dc233383c5f29 100644
+--- a/arch/arm64/boot/dts/allwinner/sun55i-t527-orangepi-4a.dts
++++ b/arch/arm64/boot/dts/allwinner/sun55i-t527-orangepi-4a.dts
+@@ -319,6 +319,8 @@
+ 				regulator-min-microvolt = <3300000>;
+ 				regulator-max-microvolt = <3300000>;
+ 				regulator-name = "vcc-3v3-phy1-lcd";
++				/* enough time for the PHY to fully power on */
++				regulator-enable-ramp-delay = <150000>;
+ 			};
+ 
+ 			reg_cpusldo: cpusldo {
