@@ -41,6 +41,7 @@ SRC_URI:append = " \
 	file://patches/0001-arm64-dts-allwinner-a523-add-gmac200-ethernet-controller.patch \
 	file://patches/0001-arm64-dts-allwinner-orangepi-4a-enable-gmac200.patch \
 	file://patches/0001-arm64-dts-allwinner-t527-orangepi-4a-Add-PHY-enable-delay.patch \
+	file://patches/0001-drm-etnaviv-add-the-Allwinner-T527-VIP9000-hardware-database-entry.patch \
 "
 
 SRC_URI:append:use-mailine-graphics = " file://drm.cfg"

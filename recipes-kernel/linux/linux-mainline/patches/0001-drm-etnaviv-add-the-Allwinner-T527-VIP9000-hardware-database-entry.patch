@@ -1,0 +1,70 @@
+From 38b490338f55f077a0e7f971c5aaacd6f3b16f42 Mon Sep 17 00:00:00 2001
+From: Phong LE <ple@baylibre.com>
+Date: Mon, 2 Nov 2026 10:42:52 +0100
+Subject: [PATCH] drm/etnaviv: add the Allwinner T527 VIP9000 hardware database
+ entry
+
+Add a hardware database entry for the VIP9000 NPU found in the
+Allwinner T527, as used on the Orange Pi 4A.
+
+It's coming from allwinner BSP driver in gc_feature_database.h with
+vip9000nano-si+ IDs.
+
+Signed-off-by: Phong LE <ple@baylibre.com>
+Reviewed-by: Daniel Drake <ddrake@baylibre.com>
+Reviewed-by: Christian Gmeiner <cgmeiner@igalia.com>
+Link: https://patch.msgid.link/20261102094343.2086424-1-ple@baylibre.com
+Signed-off-by: Christian Gmeiner <cgmeiner@igalia.com>
+
+Upstream-Status: Backport [https://gitlab.freedesktop.org/drm/misc/kernel/-/commit/38b490338f55f077a0e7f971c5aaacd6f3b16f42]
+Signed-off-by: Daniel Drake <ddrake@baylibre.com>
+---
+ drivers/gpu/drm/etnaviv/etnaviv_hwdb.c | 32 ++++++++++++++++++++++++++
+ 1 file changed, 32 insertions(+)
+
+diff --git a/drivers/gpu/drm/etnaviv/etnaviv_hwdb.c b/drivers/gpu/drm/etnaviv/etnaviv_hwdb.c
+index 32d710baf17f..54e353d61be2 100644
+--- a/drivers/gpu/drm/etnaviv/etnaviv_hwdb.c
++++ b/drivers/gpu/drm/etnaviv/etnaviv_hwdb.c
+@@ -292,6 +292,38 @@ static const struct etnaviv_chip_identity etnaviv_chip_identities[] = {
+ 		.minor_features10 = 0x108048c0,
+ 		.minor_features11 = 0x00000010,
+ 	},
++	{
++		.model = 0x9000,
++		.revision = 0x9003,
++		.product_id = 0x5090009,
++		.customer_id = 0x10000016,
++		.eco_id = 0x6000000,
++		.stream_count = 8,
++		.register_max = 64,
++		.thread_count = 256,
++		.shader_core_count = 1,
++		.nn_core_count = 6,
++		.vertex_cache_size = 16,
++		.vertex_output_buffer_size = 1024,
++		.pixel_pipes = 1,
++		.instruction_count = 512,
++		.num_constants = 320,
++		.buffer_size = 0,
++		.varyings_count = 16,
++		.features = 0xe0287cac,
++		.minor_features0 = 0xc1799eff,
++		.minor_features1 = 0xfefbfadb,
++		.minor_features2 = 0xeb9d6fbf,
++		.minor_features3 = 0xedfffced,
++		.minor_features4 = 0xd30dafc7,
++		.minor_features5 = 0x7b5ac333,
++		.minor_features6 = 0xfc8ee200,
++		.minor_features7 = 0x03fffa6f,
++		.minor_features8 = 0x00fe0ef0,
++		.minor_features9 = 0x0088003c,
++		.minor_features10 = 0x10c0c8c0,
++		.minor_features11 = 0x00000010,
++	},
+ };
+ 
+ bool etnaviv_fill_identity_from_hwdb(struct etnaviv_gpu *gpu)
+-- 
+2.56.1
+
